@@ -17,7 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Pedido extends Model
+
+class Pedido extends Model //UN ARRAY ESTATICO CON LAS REGLAS DE QUE PRECIO Y CLIENTE ID SON OBLIGATORIAS
 {
     
     static $rules = [
@@ -32,15 +33,18 @@ class Pedido extends Model
      *
      * @var array
      */
-    protected $fillable = ['precio','cliente_id'];
+
+    protected $fillable = ['precio','cliente_id'];//ATRIBUTOS QUE SE PUEDEN ASIGANR EN MASA
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
+
     public function cliente()
     {
-        return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');
+        return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');//RELACION DE UN PEDIDO QUE PERTENECE A UN CLIENTE, CLAVE FORANEA 
+                                                                        //DE LA TABLA ES CLIENTE_ID Y LA CLAVE PRINCIPAL DE LA TABLA CLIENES ES ID
     }
     
 

@@ -1,5 +1,5 @@
-<div class="box box-info padding-1">
-    <div class="box-body">
+<div class="box box-info padding-1"> <!-- contendero de estilo box info con un relleno interno de 1 -->
+    <div class="box-body"> <!-- contenedor para el cuerpo del formulario dentro del contenedor principal -->
         
         <div class="form-group">
             {{ Form::label('name') }}
@@ -14,6 +14,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button> <!-- boton de envio para el formulario -->
     </div>
 </div>

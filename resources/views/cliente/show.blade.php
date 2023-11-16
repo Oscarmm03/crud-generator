@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app') <!-- depende de la carpeta layouts -->
 
-@section('template_title')
-    {{ $cliente->name ?? "{{ __('Show') Cliente" }}
+@section('template_title') <!-- muestra el nombre del cliente registrado, de lo contrario muestra show cliente -->
+                            <!-- en show lo que mostramos es toda la informacion del cliente incluidos nombre y correo electronico -->
+{{ $cliente->name ?? "{{ __('Show') Cliente" }} 
 @endsection
 
-@section('content')
+
+
+@section('content') 
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -13,9 +16,11 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Show') }} Cliente</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('clientes.index') }}"> {{ __('Back') }}</a>
+
+                        <div class="float-right"> 
+                            <a class="btn btn-primary" href="{{ route('clientes.index') }}"> {{ __('Back') }}</a> 
                         </div>
+                        
                     </div>
 
                     <div class="card-body">

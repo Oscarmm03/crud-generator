@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
  * Class ClienteController
  * @package App\Http\Controllers
  */
+
 class ClienteController extends Controller
 {
     /**
@@ -16,7 +17,10 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index() /* Este método muestra una lista paginada de clientes. Utiliza el modelo Cliente para obtener
+                            todos los clientes, paginados. Luego, carga la vista 'cliente.index' y pasa los clientes a la vista
+                            junto con un contador $i que se utiliza para numerar los elementos en la paginación.*/
     {
         $clientes = Cliente::paginate();
 
@@ -29,7 +33,10 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create()/*Este método muestra el formulario para crear un nuevo cliente.
+                                Crea una nueva instancia del modelo Cliente y carga la vista 'cliente.create',
+                                pasando la instancia del cliente a la vista. */
     {
         $cliente = new Cliente();
         return view('cliente.create', compact('cliente'));
@@ -41,7 +48,11 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $request)/*  Este método almacena un nuevo cliente en la base de datos.
+                                                Primero, valida la solicitud según las reglas definidas en el modelo Cliente.
+                                                Luego, crea un nuevo cliente usando los datos de la solicitud y redirige a la ruta
+                                                'clientes.index' con un mensaje de éxito.*/
     {
         request()->validate(Cliente::$rules);
 
@@ -57,7 +68,10 @@ class ClienteController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show($id)/*Este método muestra los detalles de un cliente específico. Busca el cliente con el
+                            ID proporcionado utilizando el modelo Cliente y luego carga la vista 'cliente.show', pasando
+                            el cliente a la vista. */
     {
         $cliente = Cliente::find($id);
 
@@ -70,7 +84,10 @@ class ClienteController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+
+    public function edit($id)/* Este método muestra el formulario de edición para un cliente existente.
+                                Busca el cliente con el ID proporcionado y carga la vista 'cliente.edit',
+                                pasando el cliente a la vista.*/
     {
         $cliente = Cliente::find($id);
 
@@ -84,7 +101,10 @@ class ClienteController extends Controller
      * @param  Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+
+    public function update(Request $request, Cliente $cliente)/* Este método actualiza un cliente existente en la base de datos.
+                                                            Primero, valida la solicitud según las reglas definidas en el modelo Cliente. Luego,
+                                                            actualiza el cliente con los datos de la solicitud y redirige a la ruta 'clientes.index' con un mensaje de éxito.*/
     {
         request()->validate(Cliente::$rules);
 
@@ -99,7 +119,9 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+
+    public function destroy($id)/* Este método elimina un cliente específico de la base de datos. Busca el cliente con el ID
+                                    proporcionado, lo elimina y luego redirige a la ruta 'clientes.index' con un mensaje de éxito. */
     {
         $cliente = Cliente::find($id)->delete();
 

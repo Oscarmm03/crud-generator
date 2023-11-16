@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Update') }} Cliente
+    {{ __('Update') }} Cliente <!-- titulo de la pantalla update cliente -->
 @endsection
 
-@section('content')
+@section('content') <!-- contenido de la vista -->
     <section class="content container-fluid">
         <div class="">
             <div class="col-md-12">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('clientes.update', $cliente->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                            {{ method_field('PATCH') }} <!-- metodo patch pararalizar actualizaciones en especifico  ESTA VISTA ACTUALIZA UN CLIENTE-->
                             @csrf
 
                             @include('cliente.form')
